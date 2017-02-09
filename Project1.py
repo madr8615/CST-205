@@ -1,57 +1,64 @@
-from PIL import Image 
-import statistics
+###################################################################################################
 
 
-im1 = Image.open ("1.png")
-im2 = Image.open ("2.png")
-im3 = Image.open ("3.png")
-im4 = Image.open ("4.png")
-im5 = Image.open ("5.png")
-im6 = Image.open ("6.png")
-im7 = Image.open ("7.png")
-im8 = Image.open ("8.png")
-im9 = Image.open ("9.png")
 
-imageList = [im1, im2, im3, im4, im5, im6, im7, im8, im9]
+###################################################################################################
+
+
+from PIL import Image # Allows to open many images and edit them
+import statistics    #defines statistics
+
+
+im1 = Image.open ("1.png") #opening the image
+im2 = Image.open ("2.png") #opening the image
+im3 = Image.open ("3.png") #opening the image
+im4 = Image.open ("4.png") #opening the image
+im5 = Image.open ("5.png") #opening the image
+im6 = Image.open ("6.png") #opening the image
+im7 = Image.open ("7.png") #opening the image
+im8 = Image.open ("8.png") #opening the image
+im9 = Image.open ("9.png") #opening the image
+
+imageList = [im1, im2, im3, im4, im5, im6, im7, im8, im9] #adding all 9 images into the array
 print("open files")
 
-pictureWidth = im1.size[0] 
-pictureHeight = im1.size[1]
+pictureWidth = im1.size[0]   #width array set x as 0
+pictureHeight = im1.size[1]  #Height of the image y set as 1
 
-print(pictureWidth)
-print(pictureHeight)
+print(pictureWidth) #prints the width of the image
+print(pictureHeight) #prints the height of the image
 
-redMedianPixel = 0
-blueMedianPixel = 0
-greenMedianPixel = 0
+redMedianPixel = 0    # set variable red median pixel equal to 0 
+blueMedianPixel = 0   # set variable blue median pixel equal to 0 
+greenMedianPixel = 0  # set variable green median pixel equal to 0 
 
-redPixeList = []
-greenPixeList = []
-bluePixeList = []
+redPixeList = []    # creates an empty list for the red pixel
+greenPixeList = []  # creates an empty list for the green pixel
+bluePixeList = []   # creates an empty list for the blue pixel
 
-color = Image.new("RGBA", (pictureWidth, pictureHeight), "White")
+color = Image.new("RGBA", (pictureWidth, pictureHeight), "White") #
 
 
-for x in range(0, pictureWidth):
-    for y in range (0, pictureHeight):
-        for image in imageList:
+for x in range(0, pictureWidth): # the loop for x is the width of image
+    for y in range (0, pictureHeight): # the loop for y is the height of image
+        for image in imageList:  # loops all 9 images
             
-            red, blue, green = image.getpixel((x,y))
+            red, blue, green = image.getpixel((x,y))  # gets the pixels, height, and width for all 9 images
             
-            redPixeList.append(red)
-            greenPixeList.append(green)
-            bluePixeList.append(blue)
+            redPixeList.append(red)       # adds the red pixels to the list 
+            greenPixeList.append(green)   # adds the green pixels to the list
+            bluePixeList.append(blue)     # adds the blue pixels to the list
             
-        redMedianPixel = statistics.median(redPixeList)
-        greenMedianPixel = statistics.median(greenPixeList)
-        blueMedianPixel = statistics.median(bluePixeList)
+        redMedianPixel = statistics.median(redPixeList)     # return the median of the numeric data of image
+        greenMedianPixel = statistics.median(greenPixeList) # return the median of numeric data of image 
+        blueMedianPixel = statistics.median(bluePixeList)   # return the median of numeric data of image 
         
         
-        redPixeList = []
-        bluePixeList = []
-        greenPixeList = []
+        redPixeList = []   # temporary list red pixels, which begins to delete
+        bluePixeList = []  # temporary list blue pixels, which begins to delete
+        greenPixeList = [] # temporary list green pixels, which begins to delete
         
-        color.putpixel((x,y),(redMedianPixel,blueMedianPixel, greenMedianPixel)) 
+        color.putpixel((x,y),(redMedianPixel,blueMedianPixel, greenMedianPixel))  # filters out the bad colored pixels 
 
-color.save("test.png")
-print("Program Complete")
+color.save("test.png") # saves new image as test.png
+print("Program Complete") # Informing that the program runs perfectly
