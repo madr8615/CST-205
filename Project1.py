@@ -26,40 +26,32 @@ blueMedianPixel = 0
 greenMedianPixel = 0
 
 redPixeList = []
-bluePixeList = []
 greenPixeList = []
+bluePixeList = []
 
-color = Image.new("RGBA", (pictureWidth, pictureHeight), "white")
+color = Image.new("RGBA", (pictureWidth, pictureHeight), "White")
 
 
 for x in range(0, pictureWidth):
     for y in range (0, pictureHeight):
         for image in imageList:
             
-            red, green, blue = image.getpixel((x,y))
+            red, blue, green = image.getpixel((x,y))
             
             redPixeList.append(red)
-            bluePixeList.append(blue)
             greenPixeList.append(green)
+            bluePixeList.append(blue)
             
         redMedianPixel = statistics.median(redPixeList)
-        blueMedianPixel = statistics.median(bluePixeList)
         greenMedianPixel = statistics.median(greenPixeList)
+        blueMedianPixel = statistics.median(bluePixeList)
+        
         
         redPixeList = []
         bluePixeList = []
         greenPixeList = []
         
         color.putpixel((x,y),(redMedianPixel,blueMedianPixel, greenMedianPixel)) 
-        
-        
-        
-            
-
-###################################################################################################################################
-        
-       
-
 
 color.save("test.png")
 print("Program Complete")
