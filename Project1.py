@@ -11,15 +11,15 @@ from PIL import Image # Allows to open many images and edit them
 import statistics    #defines statistics
 
 
-im1 = Image.open ("1.png") #opening the image
-im2 = Image.open ("2.png") #opening the image
-im3 = Image.open ("3.png") #opening the image
-im4 = Image.open ("4.png") #opening the image
-im5 = Image.open ("5.png") #opening the image
-im6 = Image.open ("6.png") #opening the image
-im7 = Image.open ("7.png") #opening the image
-im8 = Image.open ("8.png") #opening the image
-im9 = Image.open ("9.png") #opening the image
+im1 = Image.open ("1(CSUMB).png") #opening the image
+im2 = Image.open ("2(CSUMB).png") #opening the image
+im3 = Image.open ("3(CSUMB).png") #opening the image
+im4 = Image.open ("4(CSUMB).png") #opening the image
+im5 = Image.open ("5(CSUMB).png") #opening the image
+im6 = Image.open ("6(CSUMB).png") #opening the image
+im7 = Image.open ("7(CSUMB).png") #opening the image
+im8 = Image.open ("8(CSUMB).png") #opening the image
+im9 = Image.open ("9(CSUMB).png") #opening the image
 
 imageList = [im1, im2, im3, im4, im5, im6, im7, im8, im9] #adding all 9 images into the array
 print("open files")
@@ -62,5 +62,5 @@ for x in range(0, pictureWidth): # the loop for x is the width of image
         
         color.putpixel((x,y),(redMedianPixel,blueMedianPixel, greenMedianPixel))  # filters out the bad colored pixels 
 
-color.save("test.png") # saves new image as test.png
+color.save("test2.png") # saves new image as test.png
 print("Program Complete") # Informing that the program runs perfectly
